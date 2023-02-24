@@ -2,6 +2,10 @@
 
 import { gameObject } from "./data.js"
 
+const homePlayers = Object.keys(gameObject().home.players)
+const awayPlayers = Object.keys(gameObject().away.players)
+const allPlayers = [...homePlayers, ...awayPlayers]
+
 function homeTeamName() {
     return gameObject().home.teamName
 }
@@ -85,6 +89,8 @@ function playerRebounds(x){
     }else {return 'Player Not Found'}
 }
 
+
+
 function playerPoints(x){
     const homePlayers = Object.keys(gameObject().home.players)
     const awayPlayers = Object.keys(gameObject().away.players)
@@ -96,14 +102,12 @@ function playerPoints(x){
 }
 
 
+
 console.log(playerStats('Jason Terry'))
 console.log(playerStats('Ben Gordon'))
 
 
 function bigShoeRebounds(){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
-    const allPlayers = [...homePlayers, ...awayPlayers]
     let shoeSizes = 0
     let bigShoePlayer = ""
     for (let i = allPlayers.length - 1; i >= 0; i--){
@@ -115,10 +119,9 @@ function bigShoeRebounds(){
     return playerRebounds(bigShoePlayer)
 }
 
+
+
 function highestScoringPlayer(){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
-    const allPlayers = [...homePlayers, ...awayPlayers]
     let pointsScored = 0
     let highestScoringPlayer = ""
     for (let i = allPlayers.length - 1; i >= 0; i--){
@@ -130,7 +133,11 @@ function highestScoringPlayer(){
     return highestScoringPlayer
 }
 
+
+
 console.log(highestScoringPlayer())
+
+
 
 function playerSteals(x){
     const homePlayers = Object.keys(gameObject().home.players)
@@ -143,10 +150,8 @@ function playerSteals(x){
 }
 
 
+
 function playerWithMostSteals(){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
-    const allPlayers = [...homePlayers, ...awayPlayers]
     let steals = 0
     let playerWithMostSteals = ""
     for (let i = allPlayers.length - 1; i >= 0; i--){
@@ -158,20 +163,19 @@ function playerWithMostSteals(){
     return playerWithMostSteals
 }
 
-
-
+console.log(playerWithMostSteals())
 
 
 function winningTeam(){
     const homePlayers = Object.keys(gameObject().home.players)
     let homeTeamPoints = 0
-    for( let i = homePlayers.length - 1; i >= 0; i--){
-        homeTeamPoints = homeTeamPoints + gameObject().home.players[homePlayers[i]].Points
+    for(let plyr of homePlayers){
+        homeTeamPoints = homeTeamPoints + gameObject().home.players[plyr].Points
     }
     const awayPlayers = Object.keys(gameObject().away.players)
     let awayTeamPoints = 0
-    for( let i = awayPlayers.length - 1; i >= 0; i--){
-        awayTeamPoints = awayTeamPoints + gameObject().away.players[awayPlayers[i]].Points
+    for(let plyr of awayPlayers){
+        awayTeamPoints = awayTeamPoints + gameObject().away.players[plyr].Points
     }
     if (awayTeamPoints > homeTeamPoints) {
         return gameObject().away.teamName
@@ -187,26 +191,45 @@ console.log(winningTeam())
 
 
 function playerWithLongestName(){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
-    const allPlayers = [...homePlayers, ...awayPlayers]
     let nameLength = 0
     let playerWithLongestName = ""
-    for(let i = allPlayers.length - 1; i >= 0; i--){
-        if (allPlayers[i].length > nameLength){
-            nameLength = allPlayers[i].length
-            playerWithLongestName = allPlayers[i]
+    for(let plyr of allPlayers){
+        if (plyr.length > nameLength){
+            nameLength = plyr.length
+            playerWithLongestName = plyr
         }
     }
     return playerWithLongestName
 }
-
-console.log(playerWithLongestName())
-
 function doesLongNameStealATon(){
     return playerWithLongestName() === playerWithMostSteals()
 }
 
+console.log(playerWithLongestName())
 console.log(playerWithMostSteals())
 console.log(doesLongNameStealATon())
 
+
+const playerFirstInitials = allPlayers.map(player => player[0])
+console.log(playerFirstInitials)
+
+function playerFirstNames(){
+    let playerFirstNames = []
+    for (let i = allPlayers.length - 1; i >= 0; i--) {
+        let playerName = allPlayers[i]
+        let firstName = []
+        let firstNameStr = ""
+        let x = 0
+        let char = ""
+        while(char !== " "){
+            char = playerName[x]
+            firstName.push(char)
+            x++
+        }
+        firstNameStr = firstName.join('')
+        playerFirstNames.push(firstNameStr)
+    }
+    return playerFirstNames
+}
+
+console.log(playerFirstNames())
