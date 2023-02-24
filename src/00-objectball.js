@@ -1,128 +1,12 @@
 
 
-function gameObject() {
-    const teams = {
-        home: {
-            teamName: 'Brooklyn Nets',
-            colors: ['Black', 'White'],
-            players: {
-                'Alan Anderson': {
-                    Number: 0,
-                    Shoe: 16,
-                    Points: 22,
-                    Rebounds: 12,
-                    Assists: 12,
-                    Steals: 3,
-                    Blocks: 1,
-                    SlamDunks: 1, 
-                },
-                'Reggie Evans': {
-                    Number: 30,
-                    Shoe: 14,
-                    Points: 12,
-                    Rebounds: 12,
-                    Assists: 12,
-                    Steals: 12,
-                    Blocks: 12,
-                    SlamDunks: 7, 
-                },
-                'Brook Lopez': {
-                    Number: 11,
-                    Shoe: 17,
-                    Points: 17,
-                    Rebounds: 19,
-                    Assists: 10,
-                    Steals: 3,
-                    Blocks: 1,
-                    SlamDunks: 15, 
-                },
-                'Mason Plumlee': {
-                    Number: 1,
-                    Shoe: 19,
-                    Points: 26,
-                    Rebounds: 12,
-                    Assists: 6,
-                    Steals: 3,
-                    Blocks: 8,
-                    SlamDunks: 5, 
-                },
-                'Jason Terry': {
-                    Number: 31,
-                    Shoe: 15,
-                    Points: 19,
-                    Rebounds: 2,
-                    Assists: 2,
-                    Steals: 4,
-                    Blocks: 11,
-                    SlamDunks: 1, 
-                },
-            },
-        },
-        away: {
-            teamName: 'Charlotte Hornets',
-            colors: ['Turquoise', 'Purple'],
-            players: {
-                'Jeff Adrien': {
-                    Number: 4,
-                    Shoe: 18,
-                    Points: 10,
-                    Rebounds: 1,
-                    Assists: 1,
-                    Steals: 2,
-                    Blocks: 7,
-                    SlamDunks: 2, 
-                },
-                'Bismak Biyombo': {
-                    Number: 0,
-                    Shoe: 16,
-                    Points: 12,
-                    Rebounds: 4,
-                    Assists: 7,
-                    Steals: 7,
-                    Blocks: 15,
-                    SlamDunks: 10, 
-                },
-                'DeSagna Diop': {
-                    Number: 2,
-                    Shoe: 14,
-                    Points: 24,
-                    Rebounds: 12,
-                    Assists: 12,
-                    Steals: 4,
-                    Blocks: 5,
-                    SlamDunks: 5, 
-                },
-                'Ben Gordon': {
-                    Number: 8,
-                    Shoe: 15,
-                    Points: 33,
-                    Rebounds: 3,
-                    Assists: 2,
-                    Steals: 1,
-                    Blocks: 1,
-                    SlamDunks: 0, 
-                },
-                'Brendan Haywood': {
-                    Number: 33,
-                    Shoe: 15,
-                    Points: 6,
-                    Rebounds: 12,
-                    Assists: 12,
-                    Steals: 22,
-                    Blocks: 5,
-                    SlamDunks: 12, 
-                },
-            },
-        }
-    }
-    return teams
-}
+import { gameObject } from "./data.js"
 
 function homeTeamName() {
     return gameObject().home.teamName
 }
 
-
+console.log(homeTeamName())
 
 function numPointsScored(x) {
     if(typeof gameObject().home.players[x] === 'object')
@@ -149,8 +33,8 @@ function teamColors(x) {
 }
 
 
-// console.log(teamColors('Charlotte Hornets'))
-// console.log(teamColors('Brooklyn Nets'))
+console.log(teamColors('Charlotte Hornets'))
+console.log(teamColors('Brooklyn Nets'))
 
 
 function teamNames(){
@@ -159,7 +43,7 @@ function teamNames(){
     return [homeTeam, awayTeam]
 }
 
-// console.log(teamNames())
+console.log(teamNames())
 
 
 function playerNumbers(x){
@@ -176,8 +60,8 @@ function playerNumbers(x){
     return playerNumbers
 }
 
-// console.log(playerNumbers('Brooklyn Nets'))
-// console.log(playerNumbers('Charlotte Hornets'))
+console.log(playerNumbers('Brooklyn Nets'))
+console.log(playerNumbers('Charlotte Hornets'))
 
 
 function playerStats(x){
@@ -212,8 +96,8 @@ function playerPoints(x){
 }
 
 
-// console.log(playerStats('Jason Terry'))
-// console.log(playerStats('Ben Gordon'))
+console.log(playerStats('Jason Terry'))
+console.log(playerStats('Ben Gordon'))
 
 
 function bigShoeRebounds(){
@@ -246,7 +130,7 @@ function highestScoringPlayer(){
     return highestScoringPlayer
 }
 
-// console.log(highestScoringPlayer())
+console.log(highestScoringPlayer())
 
 function playerSteals(x){
     const homePlayers = Object.keys(gameObject().home.players)
@@ -299,7 +183,7 @@ function winningTeam(){
 }
 
 
-// console.log(winningTeam())
+console.log(winningTeam())
 
 
 function playerWithLongestName(){
@@ -308,7 +192,7 @@ function playerWithLongestName(){
     const allPlayers = [...homePlayers, ...awayPlayers]
     let nameLength = 0
     let playerWithLongestName = ""
-    for(i = allPlayers.length - 1, i >= 0; i--;){
+    for(let i = allPlayers.length - 1; i >= 0; i--){
         if (allPlayers[i].length > nameLength){
             nameLength = allPlayers[i].length
             playerWithLongestName = allPlayers[i]
@@ -317,13 +201,12 @@ function playerWithLongestName(){
     return playerWithLongestName
 }
 
-// console.log(playerWithLongestName())
+console.log(playerWithLongestName())
 
 function doesLongNameStealATon(){
     return playerWithLongestName() === playerWithMostSteals()
 }
 
-// console.log(playerWithMostSteals())
-// console.log(playerWithLongestName())
-// console.log(doesLongNameStealATon())
+console.log(playerWithMostSteals())
+console.log(doesLongNameStealATon())
 
