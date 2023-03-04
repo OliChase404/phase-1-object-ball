@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Object Ball Lab for Flatiron School",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "directories": {
     "test": "test"
   },

@@ -1,7 +1,6 @@
 
 
 import { gameObject } from "./data.js"
-
 const homePlayers = Object.keys(gameObject().home.players)
 const awayPlayers = Object.keys(gameObject().away.players)
 const allPlayers = [...homePlayers, ...awayPlayers]
@@ -69,8 +68,6 @@ console.log(playerNumbers('Charlotte Hornets'))
 
 
 function playerStats(x){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
     if (homePlayers.some(player => player === x)){
         return gameObject().home.players[x]
     } else if (awayPlayers.some(player => player === x)){
@@ -80,8 +77,6 @@ function playerStats(x){
 
 
 function playerRebounds(x){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
     if (homePlayers.some(player => player === x)){
         return gameObject().home.players[x].Rebounds
     } else if (awayPlayers.some(player => player === x)){
@@ -92,8 +87,6 @@ function playerRebounds(x){
 
 
 function playerPoints(x){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
     if (homePlayers.some(player => player === x)){
         return gameObject().home.players[x].Points
     } else if (awayPlayers.some(player => player === x)){
@@ -140,8 +133,6 @@ console.log(highestScoringPlayer())
 
 
 function playerSteals(x){
-    const homePlayers = Object.keys(gameObject().home.players)
-    const awayPlayers = Object.keys(gameObject().away.players)
     if (homePlayers.some(player => player === x)){
         return gameObject().home.players[x].Steals
     } else if (awayPlayers.some(player => player === x)){
@@ -167,12 +158,10 @@ console.log(playerWithMostSteals())
 
 
 function winningTeam(){
-    const homePlayers = Object.keys(gameObject().home.players)
     let homeTeamPoints = 0
     for(let plyr of homePlayers){
         homeTeamPoints = homeTeamPoints + gameObject().home.players[plyr].Points
     }
-    const awayPlayers = Object.keys(gameObject().away.players)
     let awayTeamPoints = 0
     for(let plyr of awayPlayers){
         awayTeamPoints = awayTeamPoints + gameObject().away.players[plyr].Points
@@ -233,3 +222,13 @@ function playerFirstNames(){
 }
 
 console.log(playerFirstNames())
+
+
+
+// function reducer(x, y){
+//     let total = y.allPlayers
+// }
+
+// let total = allPlayers.reduce(0,0)
+
+// console.log(total)
